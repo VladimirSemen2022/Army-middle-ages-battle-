@@ -5,7 +5,7 @@ namespace ConsoleApp2.Soldiers.Swordsman
 {
      class Viking : SolderBase
     {
-        public Viking(string name, int dist) : base(name, 20, 5, dist, new Axe())
+        public Viking(string name, int dist) : base(name, 18, 5, dist, new OneHandeBlade())
         { }
 
         public override void GetDamage(SolderBase solder)
@@ -15,9 +15,9 @@ namespace ConsoleApp2.Soldiers.Swordsman
                 base.GetDamage(solder);
                 Random rand = new Random();
                 this.HP -= rand.Next(solder.Weapone.Damage)+1;
-                if (this.HP <= 0 && solder.HP > 0)
+                if (this.HP <= 0)
                 {
-                    solder.GetDamage(this);
+                    this.HP = 0;
                     Dead();
                 }
             }

@@ -5,7 +5,7 @@ namespace ConsoleApp2.Soldiers.SpecialSoldier
 {
     class Berserk : SolderBase
     {
-        public Berserk(string name, int dist) : base(name, 10, 7, dist, new OneHandeBlade())
+        public Berserk(string name, int dist) : base(name, 22, 7, dist, new Axe())
         { }
 
         public override void GetDamage(SolderBase solder)
@@ -15,9 +15,9 @@ namespace ConsoleApp2.Soldiers.SpecialSoldier
                 base.GetDamage(solder);
                 Random rand = new Random();
                 this.HP -= rand.Next(solder.Weapone.Damage)+1;
-                if (this.HP <= 0 && solder.HP > 0)
+                if (this.HP <= 0)
                 {
-                    solder.GetDamage(this);
+                    this.HP = 0;
                     Dead();
                 }
             }

@@ -5,20 +5,16 @@ namespace ConsoleApp2.Soldiers.SpecialSoldier
 {
     class Archer : SolderBase
     {
-        public Archer(string name, int dist) : base(name, 18, 4, dist, new Bow())
+        public Archer(string name, int dist) : base(name, 15, 4, dist, new Bow())
         { }
         public override void GetDamage(SolderBase solder)
         {
-            if (this.Distance <= solder.Weapone.Range)
-            {
-                base.GetDamage(solder);
                 Random rand = new Random();
                 this.HP -= rand.Next(solder.Weapone.Damage) + 1;
-                if (this.HP <= 0 && solder.HP > 0)
-                {
-                    solder.GetDamage(this);
-                    Dead();
-                }
+                if (this.HP <= 0)
+            {
+                this.HP = 0;
+                Dead();
             }
         }
 
