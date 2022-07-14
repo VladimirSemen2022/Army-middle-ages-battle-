@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp2.Weapone
 {
-    abstract class WeaponeBase
+    public abstract class WeaponeBase
     {
         public int Range { get; set; }
         public int Damage { get; set; }

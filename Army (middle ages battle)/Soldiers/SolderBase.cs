@@ -3,7 +3,7 @@ using ConsoleApp2.Weapone;
 
 namespace ConsoleApp2.Soldiers
 {
-    abstract class SolderBase
+    abstract public class SolderBase
     {
         public string Name { get; }
         public int HP { get; set; }
