@@ -16,8 +16,8 @@ namespace Army__middle_ages_battle_
         static void Main(string[] args)
         {   
             //Создание класса Singleton (одиночка) для реализации подключения к базе данных SQL
-            SQLConnection singel = SQLConnection.GetInstance("Server=DESKTOP-MV43C0T;Database=LogFile;Trusted_Connection=True;");
-            LogFile log = singel.Log;   //Передача делегату метода логирования записей в базу SQL
+            SQLConnection singleton = SQLConnection.GetInstance("Server=DESKTOP-MV43C0T;Database=LogFile;Trusted_Connection=True;");
+            LogFile log = singleton.SaveLog;   //Передача делегату метода логирования записей в базу SQL
 
 
             int distance = 10; //Первоначальная дистация между воинами
@@ -85,6 +85,7 @@ namespace Army__middle_ages_battle_
             }
             else
                 log(romWarriors, rome, "dead");
+            singleton.connection.Close();
         }
     }
 }

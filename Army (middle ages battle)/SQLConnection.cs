@@ -28,12 +28,13 @@ namespace Army__middle_ages_battle_
             return _instance;
         }
 
-        public void Log (SolderBase[] solder, int sold, string action)      //Метод записи данных в открытую базу SQL
+        public void SaveLog (SolderBase[] solder, int sold, string action)      //Метод записи данных в открытую базу SQL
         {
             DateTime datetime = DateTime.Now;
             var dateLogo = datetime.ToString("yyyy-MM-dd HH:mm:ss");
             string sqlText = String.Format($@"INSERT INTO [dbo].[Log]([Name],[SoldierType],[WeaponType],[HP],[Action],[DateTime]) VALUES ('{solder[sold].Name}','{solder[sold].ToString()}', '{solder[sold].Weapone.ToString()}', {solder[sold].HP}, '{action}', '{dateLogo}');");
             SqlCommand command = new SqlCommand(sqlText, connection);
+            command.ExecuteNonQuery();
         }
     }
 }
